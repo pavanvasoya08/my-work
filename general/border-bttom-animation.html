@@ -1,0 +1,46 @@
+<style>
+    span,
+    p {
+        color: inherit;
+        font-size: 40px;
+        display: inline;
+        padding: 4px 0;
+    }
+
+    span {
+        background-image: linear-gradient(to right, red, red);
+        background-size: 0 4px;
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+    }
+
+    p:hover span {
+        animation: border-move 5s infinite linear;
+    }
+
+    @keyframes border-move {
+        0% {
+            background-size: 0 4px;
+        }
+
+        90%,
+        100% {
+            background-size: 100% 4px;
+        }
+    }
+</style>
+
+<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium ratione maxime corrupti vitae ipsum voluptatem
+    obcaecati quae iste debitis voluptates ab totam, delectus cum quam voluptatibus neque facere deleniti eveniet! Lorem
+    ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente fuga laudantium veritatis culpa quos perferendis
+    deleniti aliquid maiores soluta quaerat voluptatum sed, cum eius commodi in, doloremque, voluptatibus modi.
+    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias iusto temporibus facilis voluptatibus! Esse
+        totam omnis iste commodi voluptatem tenetur dolor necessitatibus rem officia suscipit! Deleniti quae illo eius
+        autem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut nihil sit dolor repellendus quia. Iste
+        consequatur aperiam eum accusamus impedit placeat dolores, doloribus esse aliquid nesciunt totam, quibusdam, aut
+        et.</span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis nemo, atque consequuntur, mollitia
+    hic placeat nobis inventore est ab exercitationem non, reiciendis dignissimos suscipit perspiciatis quo. Impedit ad
+    provident quis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, mollitia voluptatum eaque quod
+    maxime voluptate assumenda incidunt pariatur expedita reiciendis sequi nostrum et odio error praesentium cum
+    ratione, eius corrupti!
+</p>
