@@ -1,0 +1,87 @@
+<style>
+    .counter-wrapper {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 100px;
+    }
+</style>
+
+<h1 style="text-align: center;">Scroll Down</h1>
+<div style="padding-top: 2000px;"></div>
+
+<section id="key-metrics">
+    <div class="counter-wrapper">
+        <h1 class="number">1000</h1>
+        <h1 class="number">200</h1>
+        <h1 class="number">20000</h1>
+        <h1 class="number">12</h1>
+    </div>
+</section>
+
+<script src="../public/js/jquery.min.js"></script>
+<script>
+    function startCounterAnimation() {
+        $('.number').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 2000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startCounterAnimation();
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    const counterSection = document.getElementById('key-metrics');
+    observer.observe(counterSection);
+</script>
+
+
+<script>
+    async function animateCounter(id, start, end, duration, decimalPlaces) {
+        const obj = document.getElementById(id);
+        const range = end - start;
+        const increment = range / duration * 10;
+        let current = start;
+
+        const observer = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                let timer = setInterval(() => {
+                    current += increment;
+                    obj.textContent = current.toFixed(decimalPlaces);
+                    if (current >= end) {
+                        clearInterval(timer);
+                        obj.textContent = end.toFixed(decimalPlaces);
+                    }
+                }, 10);
+                observer.disconnect();
+            }
+        });
+        observer.observe(obj);
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        const commonDuration = 1500;
+
+        await Promise.all([
+            animateCounter("count1", 0, 100, commonDuration, 0),
+            animateCounter("count2", 0, 100, commonDuration, 0),
+            animateCounter("count3", 0, 100, commonDuration, 0)
+        ]);
+    });
+</script>
