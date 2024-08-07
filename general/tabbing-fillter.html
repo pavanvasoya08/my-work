@@ -1,0 +1,134 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 40px;
+    }
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        width: 100%;
+    }
+
+    .photo-menu {
+        margin: 40px 0;
+    }
+
+    .button {
+        padding: 10px 20px;
+        font-size: 20px;
+    }
+
+    .is-active {
+        background-color: black;
+        color: white;
+    }
+
+    .metal span {
+        background-color: #aaa9ad;
+        height: 100px;
+    }
+
+    .gold span {
+        background-color: #FFD700;
+        height: 200px;
+    }
+
+    .platinum span {
+        background-color: #E5E4E2;
+        height: 125px;
+    }
+
+    .diamond span {
+        background-color: #b9f2ff;
+        height: 175px;
+    }
+
+    .mercury span {
+        background-color: #B7B8B9;
+        height: 150px;
+    }
+
+    .element-item {
+        padding: 10px;
+        width: 33.34%;
+        /* one column width: 100%; */
+        /* two column width: 50%; */
+        /* three column width: 33.34%; */
+        /* four column width: 25%; */
+    }
+</style>
+
+<h1>Isotope - filtering</h1>
+
+<div class="container">
+    <div class="photo-menu">
+        <button class="button is-active" data-filter="*">show all</button>
+        <button class="button" data-filter=".metal">metal</button>
+        <button class="button" data-filter=".gold">gold</button>
+        <button class="button" data-filter=".platinum">platinum</button>
+        <button class="button" data-filter=".diamond">diamond</button>
+        <button class="button" data-filter=".mercury">mercury</button>
+        <button class="button" data-filter=".metal, .gold">metal and gold</button>
+        <button class="button" data-filter=".platinum, .diamond">platinum and diamond</button>
+        <button class="button" data-filter=".metal, .mercury">metal and mercury</button>
+    </div>
+
+    <div class="photo-gallery">
+        <div class="element-item metal"><span>Metal</span></div>
+        <div class="element-item gold"><span>gold</span></div>
+        <div class="element-item platinum"><span>platinum</span></div>
+        <div class="element-item diamond"><span>diamond</span></div>
+        <div class="element-item mercury"><span>mercury</span></div>
+        <div class="element-item metal"><span>Metal</span></div>
+        <div class="element-item platinum"><span>platinum</span></div>
+        <div class="element-item mercury"><span>mercury</span></div>
+        <div class="element-item gold"><span>gold</span></div>
+        <div class="element-item diamond"><span>diamond</span></div>
+        <div class="element-item platinum"><span>platinum</span></div>
+        <div class="element-item mercury"><span>mercury</span></div>
+        <div class="element-item metal"><span>Metal</span></div>
+        <div class="element-item diamond"><span>diamond</span></div>
+        <div class="element-item gold"><span>gold</span></div>
+    </div>
+</div>
+
+
+<script src="../public/js/jquery.min.js"></script>
+<script src="./js/isotope.pkgd.min.js"></script>
+<script>
+    var $customContainer = $('.photo-gallery').isotope({
+        itemSelector: '.element-item',
+        masonry: {
+            columnWidth: 100,
+            horizontalOrder: true,
+        }
+    });
+
+    $('.photo-menu').on('click', '.button', function () {
+
+        var filterValue = $(this).attr('data-filter');
+        $customContainer.isotope({
+            filter: filterValue,
+            transitionDuration: "1s"
+        });
+
+        $('.button').removeClass('is-active');
+        $(this).addClass('is-active');
+    });
+
+</script>

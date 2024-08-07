@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Apply For Job</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+
+        }
+
+        .border {
+            border: 3px solid #d7eef1;
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            background-color: #e2f3f5;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .desc-div {
+            padding: 0 40px;
+        }
+
+        a {
+            color: rgb(37, 173, 190);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="border">
+        <h1>Apply For Job</h1>
+
+        <div class="desc-div">
+            <h2>Content :</h2>
+            <p>Dear Hiring Team, <br><br> A new job application has been submitted through the website. Please find the
+                details below:</p>
+            <br>
+
+            <h2>Applicant Information :</h2>
+
+            <p><b>First Name : </b>${credential.FirstName}</p>
+            <p><b>Last Name : </b>${credential.LastName}</p>
+            <p><b>Email : </b><a href="${credential.JobEmail}">${credential.JobEmail}</a></p>
+            <p><b>Phone Number : </b><a href="tel:${credential.PhoneNumber}">${credential.PhoneNumber}</a></p>
+            <br>
+
+            <h2>Application Details :</h2>
+            <p><b>Apply For : </b>${credential.ApplyFor}</p>
+            <p><b>Linkedin Profile :</b><a href="${credential.LinkedinLink}">${credential.LinkedinLink}</a></p>
+            <p><b>Attachments :</b>CV File</p>
+            <br>
+            <br>
+        </div>
+    </div>
+</body>
+
+</html>
